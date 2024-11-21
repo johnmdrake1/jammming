@@ -1,9 +1,18 @@
 import React from 'react';
 
-function Playlist() {
+function Playlist( props ) {
     return (
         <div>
-            <p>A Tracklist component of the user's selected songs will go here</p>
+            <Row>
+                <Col>
+                    <h2>My Playlist</h2>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Tracklist tracks={props.tracks} />
+                </Col>
+            </Row>
         </div>
     );
 }

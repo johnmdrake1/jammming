@@ -1,9 +1,19 @@
 import React from 'react';
+import Tracklist from '../Tracklist/Tracklist';
 
-function SearchResults(){
+function SearchResults( props ){
     return (
         <div>
-            <p>A Tracklist component for search results will go here</p>
+            <Row>
+                <Col>
+                    <h2>Search Results</h2>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <Tracklist tracks={props.tracks} />
+                </Col>
+            </Row>
         </div>
     );
 }
