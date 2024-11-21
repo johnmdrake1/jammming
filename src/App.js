@@ -12,8 +12,8 @@ import React, {useState} from 'react';
 const mocksearchresults = [
   { id:1, name: "Search track 1", artist: "Artist 1", album: "Album 1"},
   { id:2, name: "Search track 2", artist: "Artist 2", album: "Album 2"},
-  { id:1, name: "Search track 3", artist: "Artist 3", album: "Album 3"},
-  { id:1, name: "Search track 4", artist: "Artist 4", album: "Album 4"}
+  { id:3, name: "Search track 3", artist: "Artist 3", album: "Album 3"},
+  { id:4, name: "Search track 4", artist: "Artist 4", album: "Album 4"}
 ]
 
 //Mock playlist tracks, to be passed down to playlist component, then to tracklist component
@@ -31,10 +31,13 @@ function App() {
   const [playlistname, setPlaylistName] = useState("New Playlist");
   //State for the playlist itself
   const [playlist, setPlaylist] = useState([]);
-  //functioning for handling adding tracks when the add track button is clicked
+  //function for handling adding tracks when the add track button is clicked
   function addTrack(track){
-    //Make the playlist the current playlist plus the track to be added
-    setPlaylist([...playlist, track]);
+    //first check that the track is not already in the playlist. This is done by negating the result of a .find where the track in question is matched against every track.
+    if (!playlist.find((playlistTrack) => playlistTrack.id === track.id)){
+      //Make the playlist the current playlist plus the track to be added
+      setPlaylist([...playlist, track]);
+    }
   }
 
   return (
