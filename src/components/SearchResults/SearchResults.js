@@ -11,8 +11,9 @@ function SearchResults( props ){
                 </Col>
             </Row>
             <Row>
+                {/* Render a Tracklist component with the search result tracks list */}
                 <Col>
-                    <Tracklist tracks={props.tracks} />
+                    <Tracklist tracks={props.tracks} action={props.action} actionLabel={props.actionLabel} />
                 </Col>
             </Row>
         </div>
