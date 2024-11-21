@@ -6,6 +6,7 @@ import Track from './components/Track/Track';
 import SearchResults from './components/SearchResults/SearchResults';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
+import React, {useState} from 'react';
 
 //mock search result tracks, to be passed down to searchresults component, then to tracklist component
 const mocksearchresults = [
@@ -24,6 +25,11 @@ const mockplaylist = [
 ]
 
 function App() {
+
+  //Playlist name state
+  const [playlistname, setPlaylistName] = useState("New Playlist");
+
+
   return (
     <div>
       <Container>
@@ -47,7 +53,7 @@ function App() {
           </Col>
           {/* Playlist */}
           <Col md={6}>
-            <Playlist tracks={mockplaylist} />
+            <Playlist playlistname={playlistname} tracks={mockplaylist} setPlaylistName={setPlaylistName} />
           </Col>
         </Row>
       </Container>
