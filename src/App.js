@@ -3,6 +3,9 @@ import './App.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import SearchBar from './components/SearchBar/SearchBar';
 import Track from './components/Track/Track';
+import SearchResults from './components/SearchResults/SearchResults';
+import Tracklist from './components/Tracklist/Tracklist';
+import Playlist from './components/Playlist/Playlist';
 
 //mock search result tracks, to be passed down to searchresults component, then to tracklist component
 const mocksearchresults = [
@@ -36,10 +39,15 @@ function App() {
             <SearchBar />
           </Col>
         </Row>
-        {/* Placeholder for search results and playlist */}
+        {/* Search Results and Playlist components with mock data */}
         <Row>
+          {/* Search Results */}
           <Col md={6}>
-            <Track />
+            <SearchResults tracks={mocksearchresults} />
+          </Col>
+          {/* Playlist */}
+          <Col md={6}>
+            <Playlist tracks={mockplaylist} />
           </Col>
         </Row>
       </Container>

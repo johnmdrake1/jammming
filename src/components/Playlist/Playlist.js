@@ -1,4 +1,6 @@
 import React from 'react';
+import Tracklist from '../Tracklist/Tracklist';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 function Playlist( props ) {
     return (
