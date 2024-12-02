@@ -10,11 +10,11 @@ import React, {useState} from 'react';
 
 //mock search result tracks, to be passed down to searchresults component, then to tracklist component
 const mocksearchresults = [
-  { id:1, name: "Search track 1", artist: "Artist 1", album: "Album 1"},
-  { id:2, name: "Search track 2", artist: "Artist 2", album: "Album 2"},
-  { id:3, name: "Search track 3", artist: "Artist 3", album: "Album 3"},
-  { id:4, name: "Search track 4", artist: "Artist 4", album: "Album 4"}
-]
+  { id:1, name: "Search track 1", artist: "Artist 1", album: "Album 1", genre: "Genre 1", uri:"spotify:track:1"},
+  { id:2, name: "Search track 2", artist: "Artist 2", album: "Album 2", genre: "Genre 2", uri:"spotify:track:2"},
+  { id:3, name: "Search track 3", artist: "Artist 3", album: "Album 3", genre: "Genre 3", uri:"spotify:track:3"},
+  { id:4, name: "Search track 4", artist: "Artist 4", album: "Album 4", genre: "Genre 4", uri:"spotify:track:4"}
+];
 
 //Mock playlist tracks, to be passed down to playlist component, then to tracklist component
 // Don't need mock playlist tracks, just mock search results since add functionality was implemented.
@@ -46,6 +46,19 @@ function App() {
     setPlaylist(playlist.filter((playlistTrack) => playlistTrack.id !== track.id));
   }
 
+  //function for saving playlist, for now just with mock data
+  function savePlaylist(){
+    //map to extract the uri(uniform resource identifier) values from the playlist, save them to a new array called uris
+    const uris = playlist.map((track) => track.uri);
+
+    //simulate what will eventually be actually saving the playlist by logging the uri values
+    console.log("Saving playlist with name, ", playlistname, "uris:", uris);
+
+    //reset the playlist itself and playlist name to their default values since everything's done, so a new playlist can theoretically be made
+    setPlaylist([]);
+    setPlaylistName("New Playlist");
+  }
+
   return (
     <div>
       <Container>
@@ -69,7 +82,7 @@ function App() {
           </Col>
           {/* Playlist */}
           <Col md={6}>
-            <Playlist playlistname={playlistname} tracks={playlist} setPlaylistName={setPlaylistName} action={removeTrack} actionLabel="Remove" />
+            <Playlist playlistname={playlistname} tracks={playlist} setPlaylistName={setPlaylistName} action={removeTrack} actionLabel="Remove" savePlaylist={savePlaylist}/>
           </Col>
         </Row>
       </Container>

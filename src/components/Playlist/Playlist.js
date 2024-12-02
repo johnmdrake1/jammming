@@ -19,6 +19,12 @@ function Playlist( props ) {
                 </Col>
             </Row>
             <Row>
+                {/* Button that saves the playlist with the current name and tracks to spotify */}
+                <Col>
+                    <Button variant="danger" onClick={props.savePlaylist}>Save to Spotify</Button>
+                </Col>
+            </Row>
+            <Row>
                 {/* Render a tracklist with the current tracks from the playlist */}
                 <Col>
                     <Tracklist tracks={props.tracks} action={props.action} actionLabel={props.actionLabel} />
