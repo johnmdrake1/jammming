@@ -21,7 +21,7 @@ function Playlist( props ) {
             <Row>
                 {/* Render a tracklist with the current tracks from the playlist */}
                 <Col>
-                    <Tracklist tracks={props.tracks} />
+                    <Tracklist tracks={props.tracks} action={props.action} actionLabel={props.actionLabel} />
                 </Col>
             </Row>
         </div>

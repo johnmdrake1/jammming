@@ -40,6 +40,12 @@ function App() {
     }
   }
 
+  //function for handling removing of tracks when the remove track button is clicked, similar to the addTrack function
+  function removeTrack(track){
+    //Use filter on playlist state to remove track with the matching id
+    setPlaylist(playlist.filter((playlistTrack) => playlistTrack.id !== track.id));
+  }
+
   return (
     <div>
       <Container>
@@ -63,7 +69,7 @@ function App() {
           </Col>
           {/* Playlist */}
           <Col md={6}>
-            <Playlist playlistname={playlistname} tracks={playlist} setPlaylistName={setPlaylistName} />
+            <Playlist playlistname={playlistname} tracks={playlist} setPlaylistName={setPlaylistName} action={removeTrack} actionLabel="Remove" />
           </Col>
         </Row>
       </Container>
