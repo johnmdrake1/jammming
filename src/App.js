@@ -10,12 +10,13 @@ import React, {useState} from 'react';
 import Spotify from './utils/Spotify';
 
 //mock search result tracks, to be passed down to searchresults component, then to tracklist component
-const mocksearchresults = [
-  { id:1, name: "Search track 1", artist: "Artist 1", album: "Album 1", genre: "Genre 1", uri:"spotify:track:1"},
-  { id:2, name: "Search track 2", artist: "Artist 2", album: "Album 2", genre: "Genre 2", uri:"spotify:track:2"},
-  { id:3, name: "Search track 3", artist: "Artist 3", album: "Album 3", genre: "Genre 3", uri:"spotify:track:3"},
-  { id:4, name: "Search track 4", artist: "Artist 4", album: "Album 4", genre: "Genre 4", uri:"spotify:track:4"}
-];
+//Don't need anymore
+// const mocksearchresults = [
+//   { id:1, name: "Search track 1", artist: "Artist 1", album: "Album 1", genre: "Genre 1", uri:"spotify:track:1"},
+//   { id:2, name: "Search track 2", artist: "Artist 2", album: "Album 2", genre: "Genre 2", uri:"spotify:track:2"},
+//   { id:3, name: "Search track 3", artist: "Artist 3", album: "Album 3", genre: "Genre 3", uri:"spotify:track:3"},
+//   { id:4, name: "Search track 4", artist: "Artist 4", album: "Album 4", genre: "Genre 4", uri:"spotify:track:4"}
+// ];
 
 //Mock playlist tracks, to be passed down to playlist component, then to tracklist component
 // Don't need mock playlist tracks, just mock search results since add functionality was implemented.
@@ -63,10 +64,10 @@ function App() {
   }
 
   //test function for getting access token
-  function handleGetAccessToken(){
-    const token = Spotify.getAccessToken();
-    console.log("Access Token:", token);
-  }
+  // function handleGetAccessToken(){
+  //   const token = Spotify.getAccessToken();
+  //   console.log("Access Token:", token);
+  // }
 
   //doSearch function that will be called when a search is ready to be performed. Will be passed down as a prop to the SearchBar component
   function doSearch(term){
@@ -89,11 +90,11 @@ function App() {
           </Col>
         </Row>
         {/* Test Button for getting access token, will need to be removed  */}
-        <Row>
+        {/* <Row>
           <Col>
             <Button onClick={handleGetAccessToken}>Test access token</Button>
           </Col>
-        </Row>
+        </Row> */}
         {/* Search Bar */}
         <Row>
           <Col>
