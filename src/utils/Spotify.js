@@ -1,8 +1,9 @@
 //access token value
 let accessToken;
-//replaced with my client id
+//client id from .env file
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-//redirect URI to redirect to after authentification
+//redirect URL Spotify will redirect to after authentification
+//Spotify will include the access token in this URL if authentification is successful
 const redirectUri = 'http://localhost:3000/';
 
 
@@ -10,6 +11,32 @@ const redirectUri = 'http://localhost:3000/';
 const Spotify = {
     //Function for getting spotify access token
     getAccessToken() {
+        //check if the token is already stored in the accesToken variable, return it if so
+        if (accessToken){
+            return accessToken;
+        }
 
+        //extract token and expiration time from the URL using regex
+        //for holding the extraction of the token itself
+        const tokenmatch = window.location.href.match(/access_token=([^&]*)/);
+        //for holding the extraction of the expiration time match
+        const expirationmatch = window.location.href.match(/expires_in=([^&]*)/);
+
+        //if these values are successfully set
+        if (tokenmatch && expirationmatch){
+            //store the token(the [1] refers to the captured value in the regex group(([^&]*)).)
+            accessToken = tokenmatch[1];
+            //store the expiration time in seconds, convert the extracted expires_in value to a number
+            const expiresin = Number(expirationmatch[1]);
+
+            //use window.setTimeout to clear the token after it expires(in seconds, converted to milliseconds)
+            window.setTimeout(() => (accessToken = ""), expiresin * 1000)
+
+            //rewrite the url without reloading the page to remove sensitive data
+            window.history.pushState("Access Token", null, '/');
+
+            //return the access token
+            return accessToken;
+        }
     }
 }
