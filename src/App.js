@@ -92,7 +92,7 @@ function App() {
         {/* Search Bar */}
         <Row>
           <Col>
-            <SearchBar />
+            <SearchBar doSearch={doSearch}/>
           </Col>
         </Row>
         {/* Search Results and Playlist components with mock data */}

@@ -53,6 +53,38 @@ const Spotify = {
 
         //Do the actual redirect to the login/authorization page
         window.location = accessurl;
+    },
+    //Search function! Accesses API to return track object results
+    search(term) {
+        //retrieve the access token using the getAccessToken function defined above
+        const accessToken = Spotify.getAccessToken();
+        //Construct the search API endpoint for tracks
+        const endpoint = `https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(term)}`;
+
+        //fetch call itself with track search endpoint
+        return fetch(endpoint, {
+            headers: {
+                Authorization: `Bearer ${accessToken}` //Attach the access token in the request header
+            }
+        })
+        .then((response) => {
+            if(!response.ok) {
+                throw new Error(`Failed to fetch search results: ${response.statusText}`); //handle api errors
+            }
+            return response.json(); //parse the JSON response(convert raw response data into a JavaScript object for easier use)
+        })
+        .then((jsonResponse) => {
+            if (!jsonResponse.tracks) {
+                return []; //If no tracks are found, just return an empty array
+            }
+            return jsonResponse.tracks.items.map((track) => ({
+                id: track.id, //the spotify id for the track, which is the base-62 identifier found at the end of the Spotify URI
+                name: track.name, //the name of the track
+                artist: track.artists, //access the first artist's name like this, becaue of how the artists data is structured
+                album: track.album, //the album on which the track appears
+                uri: track.uri //unique spotify specific identifier for the track
+            }))
+        })
     }
 }
 
