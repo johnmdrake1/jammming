@@ -72,6 +72,8 @@ function App() {
   function doSearch(term){
     //Spotify.search(term) will return a promise, which when resolved will return an array of track objects. Search results setter is called with this array.
     Spotify.search(term).then((results) => setSearchResults(results));
+    //log the results
+    console.log(searchresults);
   }
 
   return (
@@ -99,7 +101,7 @@ function App() {
         <Row>
           {/* Search Results */}
           <Col md={6}>
-            <SearchResults tracks={mocksearchresults} action={addTrack} actionLabel="Add" />
+            <SearchResults tracks={searchresults} action={addTrack} actionLabel="Add" />
           </Col>
           {/* Playlist */}
           <Col md={6}>
