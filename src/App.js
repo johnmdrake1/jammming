@@ -32,6 +32,8 @@ function App() {
   const [playlistname, setPlaylistName] = useState("New Playlist");
   //State for the playlist itself
   const [playlist, setPlaylist] = useState([]);
+  //State for search results
+  const [searchresults, setSearchResults] = useState([]);
   //function for handling adding tracks when the add track button is clicked
   function addTrack(track){
     //first check that the track is not already in the playlist. This is done by negating the result of a .find where the track in question is matched against every track.
@@ -64,6 +66,12 @@ function App() {
   function handleGetAccessToken(){
     const token = Spotify.getAccessToken();
     console.log("Access Token:", token);
+  }
+
+  //doSearch function that will be called when a search is ready to be performed. Will be passed down as a prop to the SearchBar component
+  function doSearch(term){
+    //Spotify.search(term) will return a promise, which when resolved will return an array of track objects. Search results setter is called with this array.
+    Spotify.search(term).then((results) => setSearchResults(results));
   }
 
   return (
