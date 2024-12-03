@@ -86,6 +86,43 @@ const Spotify = {
                 uri: track.uri //unique spotify specific identifier for the track
             }))
         })
+    },
+
+    //Function for adding playlist with songs and custom name
+    savePlaylist(playlistname, trackuris){
+        //check for playlist name and track uris array
+        if(!playlistname || !trackuris.length){
+            //exit early if no names or tracks provided
+            return;
+        }
+        //get access token using getAccessToken function as above
+        const accessToken = Spotify.getAccessToken();
+        //endpoint for accessing the user's id
+        const endpoint = "https://api.spotify.com/v1/me"
+        //for storing the user's id
+        let userId;
+        //fetch the user's ID
+        return fetch(endpoint, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetch user ID: ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then((jsonResponse) => {
+            userId = jsonResponse.id; //Parses the JSON response and saves the user's id for later use
+        })
+        .then(() => {
+            //Now, create a new playlist
+        })
+        .then(() =>{
+            //Finally, add tracks to the new playlist
+        })
+        .catch((error) => console.error("Error saving playlist:", error));
     }
 }
 
