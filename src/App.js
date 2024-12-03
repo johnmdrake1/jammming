@@ -71,9 +71,12 @@ function App() {
   //doSearch function that will be called when a search is ready to be performed. Will be passed down as a prop to the SearchBar component
   function doSearch(term){
     //Spotify.search(term) will return a promise, which when resolved will return an array of track objects. Search results setter is called with this array.
-    Spotify.search(term).then((results) => setSearchResults(results));
-    //log the results
-    console.log(searchresults);
+    Spotify.search(term).then((results) => {
+      console.log("Search Results:", results); //log the results of the search
+      //set the reults using the state setter for search results
+      setSearchResults(results);
+    })
+    .catch((error) => console.error("Search error:", error));
   }
 
   return (

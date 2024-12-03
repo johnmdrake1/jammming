@@ -23,7 +23,7 @@ function Track( props ){
                     <h4>{props.track.album}</h4>
                 </Col>
                 <Col>
-                    <h4>{props.track.genre}</h4>
+                    <h4>No genre</h4>
                 </Col>
             </Row>
         </div>
