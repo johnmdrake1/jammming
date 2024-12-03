@@ -55,3 +55,5 @@ const Spotify = {
         window.location = accessurl;
     }
 }
+
+export default Spotify;

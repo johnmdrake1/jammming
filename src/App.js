@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import SearchBar from './components/SearchBar/SearchBar';
 import Track from './components/Track/Track';
 import SearchResults from './components/SearchResults/SearchResults';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import React, {useState} from 'react';
+import Spotify from './utils/Spotify';
 
 //mock search result tracks, to be passed down to searchresults component, then to tracklist component
 const mocksearchresults = [
@@ -59,6 +60,12 @@ function App() {
     setPlaylistName("New Playlist");
   }
 
+  //test function for getting access token
+  function handleGetAccessToken(){
+    const token = Spotify.getAccessToken();
+    console.log("Access Token:", token);
+  }
+
   return (
     <div>
       <Container>
@@ -66,6 +73,12 @@ function App() {
         <Row>
           <Col>
             <h1 className="text-success text-center">JAMMMMMMMMING</h1>
+          </Col>
+        </Row>
+        {/* Test Button for getting access token, will need to be removed  */}
+        <Row>
+          <Col>
+            <Button onClick={handleGetAccessToken}>Test access token</Button>
           </Col>
         </Row>
         {/* Search Bar */}
