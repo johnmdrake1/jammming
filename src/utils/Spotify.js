@@ -38,5 +38,20 @@ const Spotify = {
             //return the access token
             return accessToken;
         }
+
+        //redirect to Spotify login/authorization page if no access token is found, so user can login and grant app permission.
+        //base url, Spotify's authorization endpoint
+        let accessurl = "https://accounts.spotify.com/authorize"
+        //response type, needs to be token(implicit grant flow)
+        accessurl += "?response_type=token";
+        //this app's client id from Spotify
+        accessurl += `&client_id=${clientId}`;
+        //scope required, which is play-list-modify-public. This scope allows modification of public playlists.
+        accessurl += "&scope=playlist-modify-public";
+        //Where to redirect back to after login
+        accessurl += `&redirect_uri=${redirectUri}`;
+
+        //Do the actual redirect to the login/authorization page
+        window.location = accessurl;
     }
 }
