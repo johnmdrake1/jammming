@@ -92,7 +92,7 @@ const Spotify = {
     savePlaylist(playlistname, trackuris){
         //check for playlist name and track uris array
         if(!playlistname || !trackuris.length){
-            //exit early if no names or tracks provided
+            //exit early if no name or tracks provided, this prevents sending invalid requests
             return;
         }
         //get access token using getAccessToken function as above
@@ -118,6 +118,34 @@ const Spotify = {
         })
         .then(() => {
             //Now, create a new playlist
+            //Construct the API endpoint for creating a playlist, this uses the user's id retrieved above
+            const createPlaylistEndpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
+
+            //Define the body of the POST request, stringify it to get it ready to send to the server
+            const body = JSON.stringify({
+                name: playlistname, //the given name for the new playlist
+                description: 'This playlist was created with the Jammming app!' //(optional) description for the playlist
+                //public:false could go here, but I believe public defaults to true, and that this is an optional value, so I'm going to leave the 'public' value out unless it causes problems.
+                //I'd like playlists to be made public, maybe change this later.
+            });
+
+            //Make the POST request to create the playlist
+            return fetch(createPlaylistEndpoint, {
+                method: 'POST', //since we're CREATING the playlist, this is a POST request
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json' //This specifies that we're sending JSON data in the request body
+                },
+                body: body //Attach the JSON body with the playlist details. Passes the JSON stringified data as the payload for the request.
+            });
+        })
+        .then((response) => {
+            //When the playlist is successfully created, Spotify returns a response with the Playlist ID. We need this ID to add tracks to the playlist
+            //Check if the request was successful. If not; throw an error
+            if (!response.ok){
+                throw new Error(`Failed to create playlist: ${response.statusText}`);
+            }
+            return response.json(); //Parse the response as JSON, convert the raw response data into a JavaScript object
         })
         .then(() =>{
             //Finally, add tracks to the new playlist
