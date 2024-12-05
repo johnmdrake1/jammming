@@ -91,9 +91,10 @@ function App() {
     <div style={backgroundStyle}>
       <Container>
         {/* App Title */}
-        <Row>
+        <Row className='mb-4'>
           <Col>
-            <h1 className="text-success text-center">JAMMMMMMMMING</h1>
+            {/* <h1 className="text-success text-center">JAMMMMMMMMING</h1> */}
+            <img src="/jammming-logo.png" alt="Jammming logo" style={{ maxWidth: '100%' }} /> 
           </Col>
         </Row>
         {/* Test Button for getting access token, will need to be removed  */}

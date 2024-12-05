@@ -29,7 +29,7 @@ function SearchBar( props ){
                     />
                 </Col>
                 <Col md={4}>
-                    <Button variant="outline-light" size="lg" onClick={handleSearch}>Search songs</Button>
+                    <Button variant="outline-light" size="lg" onClick={handleSearch}>Search Spotify</Button>
                 </Col>
             </Row>
         </div>
