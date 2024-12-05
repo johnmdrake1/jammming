@@ -7,7 +7,7 @@ function Playlist( props ) {
         props.setPlaylistName(event.target.value);
     }
     return (
-        <div>
+        <div className='p-3 shadow bg-white rounded'>
             <Row>
                 {/* Dynamically updated playlist name */}
                 <Col>

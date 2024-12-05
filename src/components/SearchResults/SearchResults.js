@@ -4,7 +4,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 function SearchResults( props ){
     return (
-        <div>
+        <div className='p-3 shadow bg-white rounded'>
             <Row>
                 <Col>
                     <h2>Search Results</h2>
