@@ -114,9 +114,10 @@ const Spotify = {
             return response.json();
         })
         .then((jsonResponse) => {
+            //get the user's id for later use
             userId = jsonResponse.id; //Parses the JSON response and saves the user's id for later use
-        })
-        .then(() => {
+            console.log("User ID has been fetched with ID:", userId);
+            console.log("Playlist name to be created:", playlistname);
             //Now, create a new playlist
             //Construct the API endpoint for creating a playlist, this uses the user's id retrieved above
             const createPlaylistEndpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
@@ -147,10 +148,42 @@ const Spotify = {
             }
             return response.json(); //Parse the response as JSON, convert the raw response data into a JavaScript object
         })
-        .then(() =>{
+        .then((jsonResponse) =>{
             //Finally, add tracks to the new playlist
+            const playlistId = jsonResponse.id //Extract the playlist id from the response that was sent when spotify created the playlist
+            console.log("New Playlist created with ID: ", playlistId);
+
+            console.log("Track URIs to be added to playlist ",playlistId," : ", trackuris);
+
+            //Construct the endpoint for adding tracks to the playlist
+            const addTracksEndpoint = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`;
+
+            //Define the body of the POST request
+            const body = JSON.stringify({
+                uris: trackuris //Array of track URIs to add
+            });
+
+            //Make the POST request to add tracks
+            return fetch(addTracksEndpoint, {
+                method: "POST", //POST because we're adding tracks
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    "Content-Type": "application/json" //Specify JSON content type
+                },
+                body: body //Attach the JSON body with track URIs
+            });
         })
-        .catch((error) => console.error("Error saving playlist:", error));
+        .then((response) => {
+            //Handle the response from adding tracks and log success or errors:
+            if (!response.ok) {
+                throw new Error(`Failed to add tracks to playlist: ${response.statusText}`); //check if request was successful, if not throw error
+            }
+            console.log("Tracks added to playlist successfully!"); //confirm tracks were added to the playlist
+        })
+        .catch((error) => {
+            //Handles any errors that occur during the process and logs them.
+            console.error("Error saving playlist:", error);
+        });
     }
 }
 
