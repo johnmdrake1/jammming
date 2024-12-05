@@ -18,12 +18,18 @@ function SearchBar( props ){
     }
     return (
         <div>
-            <Row>
+            <Row className='mb-4'>
                 <Col md={8}>
-                    <input type="text" placeholder="Search for a Song" value={term} onChange={handleTermChange} />
+                    <input 
+                        type="text"
+                        className="form-control form-control-lg" //Large input for better visual alignment
+                        placeholder="Search for a Song" 
+                        value={term} 
+                        onChange={handleTermChange}
+                    />
                 </Col>
                 <Col md={4}>
-                    <Button variant="outline-dark" size="lg" onClick={handleSearch}>Search songs</Button>
+                    <Button variant="outline-light" size="lg" onClick={handleSearch}>Search songs</Button>
                 </Col>
             </Row>
         </div>
