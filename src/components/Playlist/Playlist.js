@@ -21,7 +21,7 @@ function Playlist( props ) {
             <Row>
                 {/* Button that saves the playlist with the current name and tracks to spotify */}
                 <Col>
-                    <Button variant="danger" onClick={props.savePlaylist}>Save to Spotify</Button>
+                    <Button variant="info" size="lg" onClick={props.savePlaylist}>Save to Spotify</Button>
                 </Col>
             </Row>
             <Row>

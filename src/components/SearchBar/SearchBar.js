@@ -18,12 +18,12 @@ function SearchBar( props ){
     }
     return (
         <div>
-            <Row className='bg-warning'>
+            <Row>
                 <Col md={8}>
                     <input type="text" placeholder="Search for a Song" value={term} onChange={handleTermChange} />
                 </Col>
                 <Col md={4}>
-                    <Button variant="success" onClick={handleSearch}>Search songs</Button>
+                    <Button variant="outline-dark" size="lg" onClick={handleSearch}>Search songs</Button>
                 </Col>
             </Row>
         </div>

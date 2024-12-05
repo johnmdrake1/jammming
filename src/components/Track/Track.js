@@ -11,7 +11,7 @@ function Track( props ){
                 </Col>
                 <Col>
                     {/* Add/remove button */}
-                    <Button className={props.actionLabel==="Add" ? "btn btn-success": "btn btn-danger"} onClick={() => props.action(props.track)}>{props.actionLabel}</Button>
+                    <Button variant={props.actionLabel==="Add" ? "success": "danger"} onClick={() => props.action(props.track)}>{props.actionLabel}</Button>
                 </Col>
             </Row>
             {/* Artist, album, song name, and genre */}
