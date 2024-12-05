@@ -56,7 +56,9 @@ function App() {
     const uris = playlist.map((track) => track.uri);
 
     //simulate what will eventually be actually saving the playlist by logging the uri values
-    console.log("Saving playlist with name, ", playlistname, "uris:", uris);
+    // console.log("Saving playlist with name, ", playlistname, "uris:", uris);
+    console.log("About to save playlist by calling savePlaylist in App.js, playlist and playlist name will be reset afterward...");
+    Spotify.savePlaylist(playlistname, uris);
 
     //reset the playlist itself and playlist name to their default values since everything's done, so a new playlist can theoretically be made
     setPlaylist([]);
