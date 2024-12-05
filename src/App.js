@@ -28,7 +28,12 @@ import Spotify from './utils/Spotify';
 // ]
 
 function App() {
-
+  //experimenting with styling. To get back to how it was, comment out/remove this lock and remove style=backgroundStyle from the enclosing div.
+  const backgroundStyle = {
+    backgroundColor: '#f8f9fa', // Light gray for a clean look
+    minHeight: '100vh', // Ensure it covers the full viewport
+    padding: '20px', // Add some padding around the content
+};
   //Playlist name state
   const [playlistname, setPlaylistName] = useState("New Playlist");
   //State for the playlist itself
@@ -83,7 +88,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={backgroundStyle}>
       <Container>
         {/* App Title */}
         <Row>

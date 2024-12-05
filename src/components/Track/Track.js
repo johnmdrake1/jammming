@@ -3,11 +3,11 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 
 function Track( props ){
     return (
-        <div>
+        <div className="border p-3 mb-2 bg-white rounded">
             {/* Song Name on its own line */}
             <Row>
                 <Col>
-                    <h2>{props.track.name}</h2>
+                    <h5>{props.track.name}</h5>
                 </Col>
                 <Col>
                     {/* Add/remove button */}
@@ -17,13 +17,13 @@ function Track( props ){
             {/* Artist, album, song name, and genre */}
             <Row>
                 <Col>
-                    <h4>{props.track.artist}</h4>
+                    <p>{props.track.artist}</p>
                 </Col>
                 <Col>
-                    <h4>{props.track.album}</h4>
+                    <p>{props.track.album}</p>
                 </Col>
                 <Col>
-                    <h4>No genre</h4>
+                    <p>No genre</p>
                 </Col>
             </Row>
         </div>
@@ -31,3 +31,32 @@ function Track( props ){
 }
 
 export default Track;
+
+// function Track( props ){
+//     return (
+//         <div>
+//             {/* Song Name on its own line */}
+//             <Row>
+//                 <Col>
+//                     <h2>{props.track.name}</h2>
+//                 </Col>
+//                 <Col>
+//                     {/* Add/remove button */}
+//                     <Button onClick={() => props.action(props.track)}>{props.actionLabel}</Button>
+//                 </Col>
+//             </Row>
+//             {/* Artist, album, song name, and genre */}
+//             <Row>
+//                 <Col>
+//                     <h4>{props.track.artist}</h4>
+//                 </Col>
+//                 <Col>
+//                     <h4>{props.track.album}</h4>
+//                 </Col>
+//                 <Col>
+//                     <h4>No genre</h4>
+//                 </Col>
+//             </Row>
+//         </div>
+//     );
+// }
