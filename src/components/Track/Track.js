@@ -22,9 +22,9 @@ function Track( props ){
                 <Col>
                     <p>{props.track.album}</p>
                 </Col>
-                <Col>
+                {/* <Col>
                     <p>No genre</p>
-                </Col>
+                </Col> */}
             </Row>
         </div>
     );
