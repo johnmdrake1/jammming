@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import SearchBar from './components/SearchBar/SearchBar';
-import Track from './components/Track/Track';
+// import Track from './components/Track/Track';
 import SearchResults from './components/SearchResults/SearchResults';
-import Tracklist from './components/Tracklist/Tracklist';
+// import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import React, {useState} from 'react';
 import Spotify from './utils/Spotify';

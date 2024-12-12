@@ -1,6 +1,6 @@
 import React from 'react';
 import Tracklist from '../Tracklist/Tracklist';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 function SearchResults( props ){
     return (
