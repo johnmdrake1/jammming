@@ -1,10 +1,12 @@
 //access token value
 let accessToken;
-//client id from .env file
+//client id from .env file or Netlify environment
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 //redirect URL Spotify will redirect to after authentification
 //Spotify will include the access token in this URL if authentification is successful
-const redirectUri = 'http://localhost:3000/';
+//IMPORTANT CHANGE: Commenting out this, replacing with window.location.origin to make this redirectUri dynamic based on the environment(netlify or localhost, etc.)
+// const redirectUri = 'http://localhost:3000/';
+const redirectUri = window.location.origin + '/';
 
 
 //spotify object with functions for working with the API
