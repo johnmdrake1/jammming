@@ -24,7 +24,7 @@ function Track( props ){
                 </Col>
                 {/* Album art */}
                 <Col>
-                    <img src={props.track.art} />
+                    <img src={props.track.art} alt='Album art for this track' />
                 </Col>
                 {/* End Album art section */}
             </Row>
