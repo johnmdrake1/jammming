@@ -22,9 +22,11 @@ function Track( props ){
                 <Col>
                     <p>{props.track.album}</p>
                 </Col>
-                {/* <Col>
-                    <p>No genre</p>
-                </Col> */}
+                {/* Album art */}
+                <Col>
+                    <img src={props.track.art} />
+                </Col>
+                {/* End Album art section */}
             </Row>
         </div>
     );

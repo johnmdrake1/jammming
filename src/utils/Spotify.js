@@ -85,7 +85,8 @@ const Spotify = {
                 artist: track.artists[0].name, //access the first artist's name like this, becaue of how the artists data is structured
                 album: track.album.name, //the album on which the track appears
                 // genre: track.genres[0], //whatever the first of the listed genres is
-                uri: track.uri //unique spotify specific identifier for the track
+                uri: track.uri, //unique spotify specific identifier for the track
+                art: track.album.images[2].url //album art url, third largest with index 2
             }))
         })
     },
