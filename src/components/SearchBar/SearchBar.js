@@ -19,7 +19,7 @@ function SearchBar( props ){
     return (
         <div>
             <Row className='mb-4'>
-                <Col md={8}>
+                <Col xs={8} md={8}>
                     <input 
                         type="text"
                         className="form-control form-control-lg" //Large input for better visual alignment
@@ -28,7 +28,7 @@ function SearchBar( props ){
                         onChange={handleTermChange}
                     />
                 </Col>
-                <Col md={4}>
+                <Col xs={4} md={4}>
                     <Button variant="outline-light" size="lg" onClick={handleSearch}>Search Spotify</Button>
                 </Col>
             </Row>
