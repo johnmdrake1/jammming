@@ -112,11 +112,11 @@ function App() {
         {/* Search Results and Playlist components with mock data */}
         <Row>
           {/* Search Results */}
-          <Col xs={6} md={6}>
+          <Col md={6}>
             <SearchResults tracks={searchresults} action={addTrack} actionLabel="Add" />
           </Col>
           {/* Playlist */}
-          <Col xs={6} md={6}>
+          <Col md={6}>
             <Playlist playlistname={playlistname} tracks={playlist} setPlaylistName={setPlaylistName} action={removeTrack} actionLabel="Remove" savePlaylist={savePlaylist}/>
           </Col>
         </Row>
